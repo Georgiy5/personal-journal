@@ -3,8 +3,7 @@ import CardButton from '../CardButton/CardButton';
 import JournalItem from '../JournalItem/JournalItem';
 
 function JournalList({ items }) {
-	
-	console.log(items);
+
 	if (items.length === 0){
 		return <p>Воспоминаний нет, создайте новое</p>;
 	}
