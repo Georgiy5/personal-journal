@@ -5,5 +5,10 @@
 }
 
 .invalid{
-    border: red;
+    border: 1px solid red;
+    background: rgb(53, 10, 10);
+}
+
+.input{
+    
 }

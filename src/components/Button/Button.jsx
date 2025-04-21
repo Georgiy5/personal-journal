@@ -1,9 +1,9 @@
-import './Button.css';
+import styles from './Button.module.css';
 
 function Button({ text, onClick }) {
 
 	return (
-		<button className='button accent' onClick={onClick}>{text}</button>
+		<button className={`${styles.button} ${styles.accent}`} onClick={onClick}>{text}</button>
 	);
 }
   
