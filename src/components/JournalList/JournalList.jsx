@@ -22,6 +22,7 @@ function JournalList({ items }) {
 				title = {el.title}
 				date = {el.date}
 				text = {el.text}
+				post = {el.post}
 			/>
 		</CardButton>
 	));

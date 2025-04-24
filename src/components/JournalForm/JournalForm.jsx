@@ -54,16 +54,36 @@ function JournalForm({ onSubmit }) {
 	return (
 		
 		<form className={styles['journal-form']} onSubmit={addJournalItem}>
-			<input type="text" name='title' className={cn(styles['input'], {
-				[styles['invalid']] : !formValidState.title
-			})} />
-			<input type="date" name='date' className={cn(styles['input'], {
-				[styles['invalid']] : !formValidState.date
-			})} />
-			<input type="text" name='tag' />
-			<textarea name="post" id="" cols='30' rows='10' className={cn(styles['input'], {
-				[styles['invalid']] : !formValidState.post
-			})} ></textarea>
+			<div className={styles['title-div']}>
+				<input type="text" name='title' id='title' className={cn(styles['input-title'], {
+					[styles['invalid']] : !formValidState.title
+				})} />
+				<label htmlFor="title"><img src="../archive.svg" alt="" /></label>
+			</div>
+
+			<div className={styles['date-div']}>
+				<label htmlFor='date' className={styles['label']}>
+					<img src="/calendar.svg" alt="" />
+					<span className={styles['date-span']}>Дата</span>
+				</label>
+				<input type="date" name='date' id='date' className={cn(styles['input'], styles['date'], {
+					[styles['invalid']] : !formValidState.date
+				})} />
+			</div>
+
+			<div className={styles['tag-div']}>
+				<label htmlFor='tag' className={styles['label']}>
+					<img src="/tag.svg" alt=""/>
+					<span className={styles['tag-span']}>Метки</span>
+				</label>
+				<input type="text" name='tag' id='tag' className={styles['input']} />
+			</div>
+
+			<div>
+				<textarea name="post" id="" cols='30' rows='10' className={cn(styles['input'], styles['text'], {
+					[styles['invalid']] : !formValidState.post
+				})} ></textarea>
+			</div>
 			<Button text='Сохранить' />
 		</form>
 

@@ -1,14 +1,80 @@
 .journal-form{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: Source Sans Pro;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.title-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid #333333;
+    margin-bottom: 30px;
+}
+
+.input-title{
+    border: none;
+    background: none;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0%;
+    text-align: left;
+
+}
+
+.input{
+    border: none;
+    background: none;
+    height: 40px;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    font-family: Source Sans Pro;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0%;
+    text-align: left;
+}
+
+.text{
+    margin-top: 30px;
+    height: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #333333;
+}
+
+.date-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:12px;
+    border-bottom: 1px solid #333333;
+}
+
+.label{
+    display: flex;
+    gap: 20px;
+    margin-right: 50px;
+}
+
+.tag-div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap:5px;
+    border-bottom: 1px solid #333333;
 }
 
 .invalid{
     border: 1px solid red;
     background: rgb(53, 10, 10);
-}
-
-.input{
-    
 }
