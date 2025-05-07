@@ -8,27 +8,27 @@ import JournalItem from './components/JournalItem/JournalItem';
 import JournalList from './components/JournalList/JournalList';
 import Body from '../layouts/Body/Body';
 import JournalForm from './components/JournalForm/JournalForm';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const INTITAL_DATA = [
-	// {
-	// 	id: 1,
-	// 	title: 'Подготовка к обновлению курсов',
-	// 	date: new Date(),
-	// 	text: 'Горные походы открывают удивительные природные ландшафты'
-      
-	// },
-	// {
-	// 	id: 2,
-	// 	title: 'Поход в годы',
-	// 	date: new Date(),
-	// 	text: 'Основная же цель в горном походе – не покорение вершин, а преодоление перевалов'
-      
-	// },
-];
-	
+
 function App() {
-	const [items, setItems] = useState(INTITAL_DATA);
+	const [items, setItems] = useState([]);
+
+	useEffect(() => {
+		const data = JSON.parse(localStorage.getItem('data'));
+		if (data) {
+			setItems(data.map(item => ({
+				...item,
+				date: new Date(item.date)
+			})));
+		}
+	}, []);
+
+	useEffect(() => {
+		if (items.length){
+			localStorage.setItem('data', JSON.stringify(items));
+		}
+	}, [items]);
 
 	const addItem = item => {
 		setItems(oldItems => [...oldItems, {

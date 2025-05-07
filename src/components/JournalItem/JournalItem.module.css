@@ -25,6 +25,7 @@
     letter-spacing: 0%;
     overflow:hidden;
     text-overflow: ellipsis;
+    height: 20px;
 }
 
 .journal-item__body{
