@@ -25,21 +25,24 @@ function JournalForm({ onSubmit }) {
 	useEffect(()=> {
 		if (isFormReadyToSubmit){
 			onSubmit(values);
+			dispatchForm({ type: 'CLEAR'});
 		}
 	}, [isFormReadyToSubmit]);
 
+	const onChange = (e) => {
+		dispatchForm({ type: 'SET_VALUE', payload: { [e.target.name]: e.target.value}});
+	};
+
 	const addJournalItem = (e) => {
 		e.preventDefault();
-		const formData = new FormData(e.target);
-		const formProps = Object.fromEntries(formData);
-		dispatchForm({ type: 'SUBMIT', payload: formProps});
+		dispatchForm({ type: 'SUBMIT'});
 	};
 
 	return (
 		
 		<form className={styles['journal-form']} onSubmit={addJournalItem}>
 			<div className={styles['title-div']}>
-				<input type="text" name='title' id='title' className={cn(styles['input-title'], {
+				<input type="text" onChange={onChange} value={values.title} name='title' id='title' className={cn(styles['input-title'], {
 					[styles['invalid']] : !isValid.title
 				})} />
 				<label htmlFor="title"><img src="../archive.svg" alt="" /></label>
@@ -50,7 +53,7 @@ function JournalForm({ onSubmit }) {
 					<img src="/calendar.svg" alt="" />
 					<span className={styles['date-span']}>Дата</span>
 				</label>
-				<input type="date" name='date' id='date' className={cn(styles['input'], styles['date'], {
+				<input type="date" onChange={onChange} value={values.date} name='date' id='date' className={cn(styles['input'], styles['date'], {
 					[styles['invalid']] : !isValid.date
 				})} />
 			</div>
@@ -60,11 +63,11 @@ function JournalForm({ onSubmit }) {
 					<img src="/tag.svg" alt=""/>
 					<span className={styles['tag-span']}>Метки</span>
 				</label>
-				<input type="text" name='tag' id='tag' className={styles['input']} />
+				<input type="text" onChange={onChange} value={values.tag} name='tag' id='tag' className={styles['input']} />
 			</div>
 
 			<div>
-				<textarea name="post" id="" cols='30' rows='10' className={cn(styles['input'], styles['text'], {
+				<textarea name="post" onChange={onChange} value={values.post} id="" cols='30' rows='10' className={cn(styles['input'], styles['text'], {
 					[styles['invalid']] : !isValid.post
 				})} ></textarea>
 			</div>
